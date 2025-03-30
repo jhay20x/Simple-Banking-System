@@ -6,7 +6,7 @@
 <head runat="server">
 	<link rel="shortcut icon" type="image/x-icon" href="./img/LOGO_Only.png"/>
     <title>DCSA - Transfer Money</title>
-    <link href="style/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="resources/style/bootstrap.css" rel="stylesheet" type="text/css" />
 
     <style>
         @media only screen and (min-width: 992px) and (max-width: 2500px) {
@@ -46,7 +46,7 @@
             <div class="container">
                 <div class="row d-flex align-items-center justify-content-md-between justify-content-center">
                     <div class="row col-auto">
-                        <img class="col-auto" src="img/LOGO_Only.png" alt="Logo" height="50px" width="90px" />
+                        <img class="col-auto" src="resources/img/LOGO_Only.png" alt="Logo" height="50px" width="90px" />
                         <a href="#" class="text-white fs-2 fw-semibold text-decoration-none col-auto">DCSA</a>
                     </div>
                     <div id="nav" class="row mt-3 mt-md-0 col-auto d-flex justify-content-center">
@@ -66,7 +66,7 @@
                 <div class="col-5 col-md-4 col-lg-3 btn rounded shadow mt-3 me-3 me-md-5 bg-white">
                     <div class="m-3 row d-flex justify-content-center">
                         <div class="col-12">
-                            <img class="img-fluid" src="img/person.png" alt="Logo" height="150px" width="150px" />
+                            <img class="img-fluid" src="resources/img/person.png" alt="Logo" height="150px" width="150px" />
                         </div>
                         <div class="col-12 col-md-10 col-lg bank-options">
                             <h5>To another DCSA account</h5>
@@ -77,7 +77,7 @@
                 <div class="col-5 col-md-4 col-lg-3 btn rounded shadow mt-3 bg-white">
                     <div class="m-3 row d-flex justify-content-center">
                         <div class="col-12">
-                            <img class="img-fluid" src="img/person-multiple.png" alt="Logo" height="150px" width="150px" />
+                            <img class="img-fluid" src="resources/img/person-multiple.png" alt="Logo" height="150px" width="150px" />
                         </div>
                         <div class="col-12 col-md-8 col-lg bank-options">
                             <h5>To another bank</h5>

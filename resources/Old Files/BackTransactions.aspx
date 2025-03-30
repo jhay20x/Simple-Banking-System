@@ -6,7 +6,7 @@
 <head runat="server">
 	<link rel="shortcut icon" type="image/x-icon" href="./img/LOGO_Only.png"/>
     <title>DCSA - Transactions</title>
-    <link href="style/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="resources/style/bootstrap.css" rel="stylesheet" type="text/css" />
 
     <style>
         @media only screen and (min-width: 992px) and (max-width: 2500px) {
@@ -34,7 +34,7 @@
             <div class="container">
                 <div class="row d-flex align-items-center justify-content-md-between justify-content-center">
                     <div class="row col-auto">
-                        <img class="col-auto" src="img/LOGO_Only.png" alt="Logo" height="50px" width="90px" />
+                        <img class="col-auto" src="resources/img/LOGO_Only.png" alt="Logo" height="50px" width="90px" />
                         <a href="#" class="text-white fs-2 fw-semibold text-decoration-none col-auto">DCSA</a>
                     </div>
                     <div id="nav" class="row mt-3 mt-md-0 col-auto d-flex justify-content-center">
@@ -101,8 +101,8 @@
 </body>
 </html>
 
-<script src="script/bootstrap.bundle.js" type="text/javascript"></script>
-<script src="script/jquery-3.7.1.js" type="text/javascript"></script>
+<script src="resources/script/bootstrap.bundle.js" type="text/javascript"></script>
+<script src="resources/script/jquery-3.7.1.js" type="text/javascript"></script>
 
 <script type="text/javascript">
     

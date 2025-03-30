@@ -8,6 +8,8 @@
     <title>DCSA - Login</title>
     <link href="resources/style/bootstrap.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="resources/script/bootstrap.bundle.js" type="text/javascript"></script>
+    <script src="resources/script/jquery-3.7.1.js" type="text/javascript"></script>
 </head>
 <body class="bg-danger d-flex justify-content-center align-items-center" style="min-height:100vh;">
     <form id="myForm" runat="server">
@@ -18,11 +20,11 @@
                 </a>
             </div>
             
-            <div id="errorMessage"></div>
+            <div class="col" id="errorMessage"></div>
 
             <div class="col">
                 <div class="mb-3 form-floating">
-                    <input type="text" class="form-control" name="loginUsername" id="loginUsername" placeholder="Username">
+                    <asp:TextBox class="form-control" ID="loginUsername" placeholder="Username" runat="server"></asp:TextBox>
                     <label for="loginUsername">Username</label>
                 </div>
             </div>
@@ -30,7 +32,7 @@
             <div class="col">
                 <div class="input-group mb-3">
                     <div class="form-floating">
-                        <input type="password" minlength="6" maxlength="20" id="loginPassword" autocomplete="off" class="form-control" name="loginPassword" placeholder="Password">
+                        <asp:TextBox class="form-control" ID="loginPassword" placeholder="Password" runat="server" TextMode="Password"></asp:TextBox>
                         <label for="loginPassword">Password</label>
                     </div>
                     <button class="btn btn-outline-secondary" type="button" id="togglePassword"><i id="toggleIcon" class="bi bi-eye"></i></button>
@@ -48,15 +50,13 @@
 </body>
 </html>
 
-<script src="resources/script/bootstrap.bundle.js" type="text/javascript"></script>
-<script src="resources/script/jquery-3.7.1.js" type="text/javascript"></script>
-
 <script type="text/javascript">
     $("#togglePassword").on("click", function() {
         if ($("#loginPassword").attr("type") == "password") {
             $("#loginPassword").attr("type", "text");
             $("#toggleIcon").removeClass(['bi', 'bi-eye']);
             $("#toggleIcon").addClass(['bi', 'bi-eye-slash']);
+
         } else {
             $("#loginPassword").attr("type", "password");
             $("#toggleIcon").removeClass(['bi', 'bi-eye-slash']);

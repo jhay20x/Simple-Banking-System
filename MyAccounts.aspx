@@ -24,6 +24,12 @@
             .nav-item {
                 border-radius: 0.5rem;
             }
+
+            .dropdown-item:hover {                
+                background-color: maroon !important;
+                color: white !important;
+                transition: 0.3s;
+            }
         }
 
         @media only screen and (max-width: 992px) {
@@ -46,6 +52,12 @@
 
             .nav-item {
                 border-radius: 0.5rem;
+            }
+
+            .dropdown-item:hover {                
+                background-color: maroon !important;
+                color: white !important;
+                transition: 0.3s;
             }
         }
     </style>
@@ -72,7 +84,10 @@
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="Login.aspx">Logout</a></li>
+                <li>
+                    <asp:Button ID="Logout" class="dropdown-item" runat="server" Text="Logout" />
+                    <%--<a class="dropdown-item" href="Login.aspx">Logout</a>--%>
+                </li>
             </ul>
         </li>
     </ul>

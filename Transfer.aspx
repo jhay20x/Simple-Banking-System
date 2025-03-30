@@ -25,6 +25,12 @@
                 border-radius: 0.5rem;
             }
 
+            .dropdown-item:hover {                
+                background-color: maroon !important;
+                color: white !important;
+                transition: 0.3s;
+            }
+
             .bank-options h5 {
                 font-size: 1rem;
             }
@@ -60,6 +66,12 @@
 
             .nav-item {
                 border-radius: 0.5rem;
+            }
+
+            .dropdown-item:hover {                
+                background-color: maroon !important;
+                color: white !important;
+                transition: 0.3s;
             }
 
             .bank-options h5 {
@@ -112,7 +124,7 @@
             <div class="col-5 col-md-4 col-lg-3 btn rounded shadow mt-3 me-3 me-md-5 bg-white">
                 <div class="m-3 row d-flex justify-content-center">
                     <div class="col-12">
-                        <img class="img-fluid" src="img/person.png" alt="Logo" height="150px" width="150px" />
+                        <img class="img-fluid" src="resources/img/person.png" alt="Logo" height="150px" width="150px" />
                     </div>
                     <div class="col-12 col-md-10 col-lg bank-options">
                         <h5>To another DCSA account</h5>
@@ -123,7 +135,7 @@
             <div class="col-5 col-md-4 col-lg-3 btn rounded shadow mt-3 bg-white">
                 <div class="m-3 row d-flex justify-content-center">
                     <div class="col-12">
-                        <img class="img-fluid" src="img/person-multiple.png" alt="Logo" height="150px" width="150px" />
+                        <img class="img-fluid" src="resources/img/person-multiple.png" alt="Logo" height="150px" width="150px" />
                     </div>
                     <div class="col-12 col-md-8 col-lg bank-options">
                         <h5>To another bank</h5>

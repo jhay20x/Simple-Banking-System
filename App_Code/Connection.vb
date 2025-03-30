@@ -3,15 +3,18 @@ Imports System.Data.SqlClient
 Imports System.Data
 
 Public Class Connection
-    'Public ConnectionString As String = "Data Source=SACRILEGIOUS\GONZALESSERVER;Initial Catalog=Registration;Integrated Security=True"
-    Public ConnectionString As String = "Data Source=JHAYJAYGONZALES\GONZALESSERVER;Initial Catalog=Registration;Integrated Security=True"
+    'Public ConnectionString As String = "Data Source=JHAYJAYGONZALES\GONZALESSERVER;Initial Catalog=notesdb;Persist Security Info=True;User ID=Jhayjay;Password=Jhayjay; MultipleActiveResultSets=true;"
+    'Public ConnectionString As String = "Data Source=SACRILEGIOUS\GONZALESSERVER;Initial Catalog=notesdb;Integrated Security=True"
+    Public ConnectionString As String = System.Configuration.ConfigurationManager.ConnectionStrings("DefaultConnection").ConnectionString
 
     Public Connect As New SqlConnection(ConnectionString)
 
     Public Parameters As New List(Of SqlParameter)
 
-    Public Data As Dataset
+    Public Data As DataSet
     Public DataAsTable As DataTable
+
+    Public SESSION As DataRow
 
     Public DataCount As Integer
 
@@ -28,14 +31,10 @@ Public Class Connection
     End Sub
 
     Public Sub AddParam(ByVal key As String, ByVal value As String)
-        If value = "" Or value = "None" Then
-            Parameters.Add(New SqlParameter(key, DBNull.Value))
-        Else
-            Parameters.Add(New SqlParameter(key, value))
-        End If
+        Parameters.Add(New SqlParameter(key, value))
     End Sub
 
-    Public Function Query(ByVal command_query As String) As Boolean
+    Public Function Query(ByVal command_query As String)
         Open()
 
         Dim command As New SqlCommand(command_query, Connect)
@@ -75,5 +74,5 @@ Public Class Connection
             Return False
         End If
     End Function
-
 End Class
+
