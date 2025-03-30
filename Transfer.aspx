@@ -44,6 +44,11 @@
                 transform: scale(1);
                 transition: 0.3s;
             }
+
+            .btn-outline-danger:hover {
+                color: white !important;
+                background-color: #dc3545 !important;
+            }
         }
 
         @media only screen and (max-width: 992px) {
@@ -87,6 +92,11 @@
                 transform: scale(1);
                 transition: 0.3s;
             }
+
+            .btn-outline-danger:hover {
+                color: white !important;
+                background-color: #dc3545 !important;
+            }
         }
     </style>
 </asp:Content>
@@ -107,22 +117,129 @@
                 More
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">My Profile</a></li>
+                <li><a class="dropdown-item" href="#">Change Password</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="Login.aspx">Logout</a></li>
+                <li>
+                    <asp:Button ID="Logout" class="dropdown-item" runat="server" Text="Logout" />
+                    <%--<a class="dropdown-item" href="Login.aspx">Logout</a>--%>
+                </li>
             </ul>
         </li>
     </ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <!-- Modal -->
+    <div class="modal fade" id="transferOwnModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="transferOwnLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header d-flex align-items-center">
+                    <h6 class="modal-title" id="transferOwnLabel">Transfer to own account</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" id="transferOwnClose" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="col">
+                            <h6>No eligible accounts found.</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="modal-footer">
+                    <input type="submit" class="btn btn-sm btn-primary btn-md mt-1" value="Submit" name="transferOwnSubmitBtn">
+                </div> -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="transferOtherModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="transferOtherLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header d-flex align-items-center">
+                    <h6 class="modal-title" id="transferOtherLabel">Transfer to another bank</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" id="transferOtherClose" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <h6 class="col-12 ps-0">Transfer from:</h6>
+
+                            <div class="col-12">
+                                <input type="radio" class="btn-check" name="options" id="btn1" autocomplete="off">
+                                <label class="btn btn-outline-danger col-12" for="btn1">
+                                    <h6 class="col-12">Savings Account</h6>
+                                    <h6 class="col-12 fw-normal">0145965679</h6>
+                                    <h6 class="col-12 fw-normal"><small>PHP</small> <span>1500.00</span></h6>
+                                </label>
+                            </div>
+
+                            <div class="col-12">
+                                <input type="radio" class="btn-check" name="options" id="btn2" autocomplete="off">
+                                <label class="btn btn-outline-danger col-12 mt-3" for="btn2">
+                                    <h6 class="col-12">Savings Account</h6>
+                                    <h6 class="col-12 fw-normal">0145965679</h6>
+                                    <h6 class="col-12 fw-normal"><small>PHP</small> <span>1500.00</span></h6>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-3">
+                            <h6 class="col-12 ps-0">Transfer To:</h6>
+
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <select class="form-control" name="otherBanks" id="otherBanks">
+                                        <option value="">Fake GCash</option>
+                                    </select>
+                                    <label for="otherBanks">Select Bank:</label>
+                                </div>
+
+                                <div class="form-floating mt-3">
+                                    <input type="text" class="form-control" placeholder="Account Number" name="acccountNumber" id="acccountNumber">
+                                    <label for="acccountNumber">Account Number</label>
+                                </div>
+
+                                <div class="form-floating mt-3">
+                                    <input type="text" class="form-control" placeholder="Account Name" name="acccountNumber" id="acccountNumber">
+                                    <label for="acccountNumber">Account Name</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-3">
+                            <h6 class="col-12 ps-0">Transfer Amount:</h6>
+
+                            <div class="row col-auto align-items-center">
+                                <h6>PHP</h6>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="0.00" name="acccountNumber" id="acccountNumber">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row justify-content-center mt-3">
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-danger" name="Continue" id="continueBtn">Continue</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="modal-footer">
+                    <input type="submit" class="btn btn-sm btn-primary btn-md mt-1" value="Submit" name="transferOtherSubmitBtn">
+                </div> -->
+            </div>
+        </div>
+    </div>
+
     <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="row col d-flex justify-content-center align-items-center">
             <h1 class="text-center">Transfer Money</h1>
             <div class="col-5 col-md-4 col-lg-3 btn rounded shadow mt-3 me-3 me-md-5 bg-white">
-                <div class="m-3 row d-flex justify-content-center">
+                <div class="m-3 row d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#transferOwnModal">
                     <div class="col-12">
                         <img class="img-fluid" src="resources/img/person.png" alt="Logo" height="150px" width="150px" />
                     </div>
@@ -132,7 +249,7 @@
                 </div>
             </div>
             
-            <div class="col-5 col-md-4 col-lg-3 btn rounded shadow mt-3 bg-white">
+            <div class="col-5 col-md-4 col-lg-3 btn rounded shadow mt-3 bg-white" data-bs-toggle="modal" data-bs-target="#transferOtherModal">
                 <div class="m-3 row d-flex justify-content-center">
                     <div class="col-12">
                         <img class="img-fluid" src="resources/img/person-multiple.png" alt="Logo" height="150px" width="150px" />

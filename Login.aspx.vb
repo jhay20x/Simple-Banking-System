@@ -32,7 +32,14 @@ Partial Class _Default
 
             If ComputeHash(password).SequenceEqual(DirectCast(user("Password"), Byte())) Then
                 FormsAuthentication.SetAuthCookie(username, False)
-                Response.Redirect("MyAccounts.aspx")
+
+                Dim returnUrl As String = Request.QueryString("ReturnUrl")
+
+                If Not String.IsNullOrEmpty(returnUrl) AndAlso returnUrl.ToLower() <> "login.aspx" Then
+                    Response.Redirect(returnUrl)
+                Else
+                    Response.Redirect("MyAccounts.aspx")
+                End If
             Else
                 Dim script As String = "$(""#errorMessage"").append('<div class=""alert alert-danger"" role=""alert"">Password is incorrect. Please try again.</div>');"
                 ClientScript.RegisterStartupScript(Me.GetType(), "ErrorMesssage", script, True)
