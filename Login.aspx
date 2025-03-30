@@ -4,9 +4,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-	<link rel="shortcut icon" type="image/x-icon" href="./img/LOGO_Only.png"/>
+	<link rel="shortcut icon" type="image/x-icon" href="resources/img/LOGO_Only.png"/>
     <title>DCSA - Login</title>
-    <link href="style/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="resources/style/bootstrap.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body class="bg-danger d-flex justify-content-center align-items-center" style="min-height:100vh;">
@@ -14,7 +14,7 @@
         <div class="p-5 flex-column bg-white rounded shadow d-flex align-items-center row">
             <div class="d-flex flex-column align-items-center mb-3">
                 <a href="#">
-                    <img src="./img/LOGO Initials.png" alt="Logo" width="250" height="90">
+                    <img src="resources/img/LOGO Initials.png" alt="Logo" width="250" height="90">
                 </a>
             </div>
             
@@ -48,8 +48,8 @@
 </body>
 </html>
 
-<script src="script/bootstrap.bundle.js" type="text/javascript"></script>
-<script src="script/jquery-3.7.1.js" type="text/javascript"></script>
+<script src="resources/script/bootstrap.bundle.js" type="text/javascript"></script>
+<script src="resources/script/jquery-3.7.1.js" type="text/javascript"></script>
 
 <script type="text/javascript">
     $("#togglePassword").on("click", function() {
