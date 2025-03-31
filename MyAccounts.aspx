@@ -95,6 +95,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Navbar" Runat="Server">
     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
         <li class="nav-item me-0 me-lg-3">
+            <a class="nav-link ms-3 ms-lg-0 fw-semibold">Welcome <asp:Label class="ms-1" ID="usernameLabel" runat="server"></asp:Label>!</a>
+        </li>
+        <li class="nav-item me-0 me-lg-3">
             <a class="nav-link ms-3 ms-lg-0 active" aria-current="page" href="./MyAccounts.aspx">My Accounts</a>
         </li>
         <li class="nav-item me-0 me-lg-3">
@@ -129,18 +132,18 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header d-flex align-items-center">
-                    <h6 class="modal-title" id="accountDetailsLabel">Savings Account</h6>
+                    <h6 class="modal-title" id="accountDetailsLabel"><asp:Label class="ms-1" ID="accountTypeTitleModalLabel" runat="server"></asp:Label> Account</h6>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" id="accountDetailsClose" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="col">
                             <h6>Available Balance</h6>
-                            <span><small>PHP</small> 1500.00</span>
+                            <span><small>PHP</small> <asp:Label class="fw-semibold" ID="availableBalanceModalLabel" runat="server"></asp:Label></span>
                         </div>
                         <div class="col mt-3">
                             <h6>Total Balance</h6>
-                            <span><small>PHP</small> 1500.00</span>
+                            <span><small>PHP</small> <asp:Label class="fw-semibold" ID="totalBalanceModalLabel" runat="server"></asp:Label></span>
                         </div>                        
                         <div class="accordion accordion-flush mt-3" id="accountDetails">
                             <div class="accordion-item">
@@ -153,12 +156,12 @@
                                     <div class="row">
                                         <div class="accordion-body col-6">
                                             <h6 class="fw-normal">Account Number</h6 class="fw-normal">
-                                            <h6>0145965679</h6>
+                                            <h6><asp:Label class="ms-1" ID="accountNumberModalLabel" runat="server"></asp:Label></h6>
                                         </div>
 
                                         <div class="accordion-body col-6">
                                             <h6 class="fw-normal">Account Type</h6 class="fw-normal">
-                                            <h6>Checking Account</h6>
+                                            <h6><asp:Label class="ms-1" ID="accountTypeDetailsModalLabel" runat="server"></asp:Label> Account</h6>
                                         </div>
                                     </div>
 
@@ -198,14 +201,14 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#accountOne" aria-expanded="true" aria-controls="accountOne">
-                                    Savings Account: 0145965679
+                                    <asp:Label class="me-1" ID="accountTypeLabel" runat="server"></asp:Label> Account: <asp:Label class="ms-1" ID="accountNumberLabel" runat="server"></asp:Label>
                                 </button>
                             </h2>
                             <div id="accountOne" class="accordion-collapse collapse show" data-bs-parent="#myAccounts">
                                 <div class="accordion-body row align-items-center">
                                     <div class="col row">
                                         <div class="col-auto">
-                                            <a href="#" class="text-decoration-none h5" data-bs-toggle="modal" data-bs-target="#accountDetailsModal">Available Balance: <small class="small fw-semibold">PHP</small> <span id="balance" class="h5">1500.00</span></a>
+                                            <a href="#" class="text-decoration-none text-black" data-bs-toggle="modal" data-bs-target="#accountDetailsModal"><span class="h5">Available Balance: </span><small>PHP</small> <asp:Label class="h5" ID="availableBalanceLabel" runat="server"></asp:Label></a>
                                         </div>
                                     </div>
                                 </div>

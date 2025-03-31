@@ -21,7 +21,10 @@ Partial Class _Default
             Exit Sub
         End If
 
-        Dim query = "SELECT * FROM Users WHERE Username = @Username"
+        Dim query = "SELECT us.Username, us.Password, us.UserType, ac.AccountsID FROM Users us " & _
+        "LEFT OUTER JOIN UserInfo ui ON ui.UserID = us.UserID " & _
+        "LEFT OUTER JOIN Accounts ac ON ui.UserInfoID = ac.UserInfoID " & _
+        "WHERE us.Username = @Username"
 
         Connection.AddParam("@Username", username)
 
@@ -31,8 +34,12 @@ Partial Class _Default
             Dim user = Connection.Data.Tables(0).Rows(0)
 
             If ComputeHash(password).SequenceEqual(DirectCast(user("Password"), Byte())) Then
-                FormsAuthentication.SetAuthCookie(username, False)
+                'FormsAuthentication.SetAuthCookie(username, False)
 
+                Dim ticket As New FormsAuthenticationTicket(1, username, DateTime.Now, DateTime.Now.AddMinutes(30), False, user("AccountsID"))
+                Dim encryptedTicket As String = FormsAuthentication.Encrypt(ticket)
+                Dim authCookie As New HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket)
+                Response.Cookies.Add(authCookie)
                 Dim returnUrl As String = Request.QueryString("ReturnUrl")
 
                 If Not String.IsNullOrEmpty(returnUrl) AndAlso returnUrl.ToLower() <> "login.aspx" Then

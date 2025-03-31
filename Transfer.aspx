@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/MasterPage.master" AutoEventWireup="false" CodeFile="Transfer.aspx.vb" Inherits="Transfer" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <title>DCSA - Transactions</title>    
+    <title>DCSA - Transfer</title>    
     <style>
         @media only screen and (min-width: 992px) and (max-width: 2500px) {
             .nav-link {
