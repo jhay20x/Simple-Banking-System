@@ -21,7 +21,7 @@ Partial Class _Default
             Exit Sub
         End If
 
-        Dim query = "SELECT us.Username, us.Password, us.UserType, ac.AccountsID FROM Users us " & _
+        Dim query = "SELECT us.Username, us.Password, us.UserType, ac.AccountsID, ac.UserInfoID FROM Users us " & _
         "LEFT OUTER JOIN UserInfo ui ON ui.UserID = us.UserID " & _
         "LEFT OUTER JOIN Accounts ac ON ui.UserInfoID = ac.UserInfoID " & _
         "WHERE us.Username = @Username"
@@ -36,7 +36,7 @@ Partial Class _Default
             If ComputeHash(password).SequenceEqual(DirectCast(user("Password"), Byte())) Then
                 'FormsAuthentication.SetAuthCookie(username, False)
 
-                Dim ticket As New FormsAuthenticationTicket(1, username, DateTime.Now, DateTime.Now.AddMinutes(30), False, user("AccountsID"))
+                Dim ticket As New FormsAuthenticationTicket(1, username, DateTime.Now, DateTime.Now.AddMinutes(30), False, user("AccountsID") & "," & user("UserInfoID"))
                 Dim encryptedTicket As String = FormsAuthentication.Encrypt(ticket)
                 Dim authCookie As New HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket)
                 Response.Cookies.Add(authCookie)

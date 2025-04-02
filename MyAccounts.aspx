@@ -13,6 +13,10 @@
             .nav-link.active {
                 font-weight: bolder;
             }
+        
+            #welcomeLabel:hover {            
+                background-color: #dc3545 !important;
+            }
             
             .nav-link:hover{
                 color: white !important;
@@ -60,6 +64,11 @@
             .nav-link:hover, .nav-link.show{
                 color: white !important;
             }
+        
+            #welcomeLabel, #welcomeLabel a:hover {            
+                color: black !important;
+                background-color: white !important;
+            }
 
             .nav-item:hover {
                 background-color: maroon !important;
@@ -94,7 +103,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Navbar" Runat="Server">
     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-        <li class="nav-item me-0 me-lg-3">
+        <li id="welcomeLabel" class="nav-item me-0 me-lg-3">
             <a class="nav-link ms-3 ms-lg-0 fw-semibold">Welcome <asp:Label class="ms-1" ID="usernameLabel" runat="server"></asp:Label>!</a>
         </li>
         <li class="nav-item me-0 me-lg-3">
@@ -154,12 +163,12 @@
                                 </h2>
                                 <div id="otherDetails" class="accordion-collapse collapse" data-bs-parent="#accountDetails">
                                     <div class="row">
-                                        <div class="accordion-body col-6">
+                                        <div class="accordion-body pb-0 col-6">
                                             <h6 class="fw-normal">Account Number</h6 class="fw-normal">
                                             <h6><asp:Label class="ms-1" ID="accountNumberModalLabel" runat="server"></asp:Label></h6>
                                         </div>
 
-                                        <div class="accordion-body col-6">
+                                        <div class="accordion-body pb-0 col-6">
                                             <h6 class="fw-normal">Account Type</h6 class="fw-normal">
                                             <h6><asp:Label class="ms-1" ID="accountTypeDetailsModalLabel" runat="server"></asp:Label> Account</h6>
                                         </div>
@@ -176,7 +185,7 @@
                         </div>
                         <hr>
                         <div class="col">
-                            <a href="#" class="text-decoration-none h6"><span><i class="bi bi-arrow-left-right"></i></span> Transfer To</a>
+                            <a href="./Transfer.aspx" class="text-decoration-none h6"><span><i class="bi bi-arrow-left-right"></i></span> Transfer</a>
                         </div>
 
                         <div class="col mt-3">                            
@@ -192,10 +201,10 @@
     </div>
 
     <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
-        <div class="row col d-flex justify-content-center align-items-center">
-            <h1 class="text-center">Deposit Accounts</h1>
+        <div class="row d-flex justify-content-center align-items-center">
+            <h1 class="text-center">Deposit Account</h1>
 
-            <div class="rounded shadow mt-3 bg-white col-11 col-md-10 col-lg-8">
+            <div class="rounded shadow m-2 bg-white col-11 col-md-10">
                 <div class="my-3 mx-1">
                     <div class="accordion" id="myAccounts">
                         <div class="accordion-item">
@@ -216,7 +225,7 @@
                         </div>
                     </div>
                 </div>
-            </div>    
+            </div>     
         </div>
     </div>
     

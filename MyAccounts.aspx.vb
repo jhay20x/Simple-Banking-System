@@ -15,7 +15,8 @@ Partial Class MyAccounts
         If authCookie IsNot Nothing Then
             Dim ticket As FormsAuthenticationTicket = FormsAuthentication.Decrypt(authCookie.Value)
 
-            Dim accountNumber As String = ticket.UserData
+            Dim userData As String() = ticket.UserData.Split(","c)
+            Dim accountNumber As String = userData(0)
             Dim balance As DataRow = GetBalance(accountNumber)
 
             usernameLabel.Text = ticket.Name
@@ -30,8 +31,6 @@ Partial Class MyAccounts
             availableBalanceModalLabel.Text = balance("AvailableBalance").ToString
             totalBalanceModalLabel.Text = balance("TotalBalance").ToString
         End If
-
-        'Dim query = "SELECT AvailableBalance FROM Accounts WHERE Username"
     End Sub
 
     Private Function GetBalance(ByVal accountNumber As String) As DataRow
