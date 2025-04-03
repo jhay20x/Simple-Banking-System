@@ -123,10 +123,32 @@
             $("#otherBanks").prop("disabled", true).val(1);
             $(".optionsDCSA, #<%= accountNumberDCSA.ClientID %>, #<%= accountNameDCSA.ClientID %>, #<%= amountDCSA.ClientID %>").prop("disabled", true);
             $(".optionsOther, #<%= accountNumberOther.ClientID %>, #<%= accountNameOther.ClientID %>, #<%= amountOther.ClientID %>").prop("disabled", true);
-        } 
+        }
+
+        function limitFields() {
+                $("#<%= accountNumberDCSA.ClientID %>, #<%= accountNumberOther.ClientID %>").on("input", function () {
+                    if (this.value.length > 10) {
+                        this.value = this.value.substring(0, 11);
+                    }
+                });
+    
+                $("#<%= amountDCSA.ClientID %>, #<%= amountOther.ClientID %>").on("input", function () {
+                    if (this.value.length > 8) {
+                        this.value = this.value.substring(0, 8);
+                    }
+                });
+    
+                $("#<%= amountDCSA.ClientID %>, #<%= amountOther.ClientID %>").on("blur", function () {                
+                    let val = parseFloat(this.value);
+                    if (!isNaN(val)) {
+                        this.value = val.toFixed(2);
+                    }
+                });
+            }
 
         $(document).ready(function () {
-            disableInputs();        
+            disableInputs();   
+            limitFields();
 
             $("#transferDCSA").on("click", function () {
                 $("input[name='optionsDCSA']").prop("checked", false).prop("disabled", false);
@@ -145,7 +167,7 @@
 
             $("#transferOther").on("click", function () {
                 $("input[name='optionsOther']").prop("checked", false).prop("disabled", false);
-                $("#otherBanks").prop("disabled", false);
+                $("#otherBanks").prop("disabled", false).val(1);
                 $(".optionsOther, #<%= accountNumberOther.ClientID %>, #<%= accountNameOther.ClientID %>, #<%= amountOther.ClientID %>").prop("disabled", false);
 
                 $("input[name='optionsDCSA']").prop("checked", false).prop("disabled", true);
@@ -158,25 +180,6 @@
                 $("#otherBanks").prop("disabled", true).val(1);
                 $(".optionsOther, #<%= accountNumberOther.ClientID %>, #<%= accountNameOther.ClientID %>, #<%= amountOther.ClientID %>").prop("disabled", true).val("");
             });
-
-            $("#<%= accountNumberDCSA.ClientID %>, #<%= accountNumberOther.ClientID %>").on("input", function () {
-                if (this.value.length > 10) {
-                    this.value = this.value.substring(0, 10);
-                }
-            });
-
-            $("#<%= amountDCSA.ClientID %>, #<%= amountOther.ClientID %>").on("input", function () {
-                if (this.value.length > 8) {
-                    this.value = this.value.substring(0, 8);
-                }
-            });
-
-            $("#<%= amountDCSA.ClientID %>, #<%= amountOther.ClientID %>").on("blur", function () {                
-                let val = parseFloat(this.value);
-                if (!isNaN(val)) {
-                    this.value = val.toFixed(2);
-                }
-            });                
         });
     </script>
 </asp:Content>
@@ -250,12 +253,12 @@
 
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <asp:TextBox class="form-control" required ID="accountNumberDCSA" placeholder="Account Number (Ex: 1234657890)" runat="server" type="number"></asp:TextBox>
+                                    <asp:TextBox class="form-control optionsDCSA" required ID="accountNumberDCSA" placeholder="Account Number (Ex: 1234657890)" runat="server" type="number"></asp:TextBox>
                                     <label for="<%= accountNumberDCSA.ClientID %>">Account Number (Ex: 1234657890)</label>
                                 </div>
 
                                 <div class="form-floating mt-3">
-                                    <asp:TextBox class="form-control" required ID="accountNameDCSA" placeholder="Account Name (Ex: Juan Dela Cruz)" runat="server"></asp:TextBox>
+                                    <asp:TextBox class="form-control optionsDCSA" required ID="accountNameDCSA" placeholder="Account Name (Ex: Juan Dela Cruz)" runat="server"></asp:TextBox>
                                     <label for="<%= accountNameDCSA.ClientID %>">Account Name (Ex: Juan Dela Cruz)</label>
                                 </div>
                             </div>
@@ -269,7 +272,7 @@
                             </div>
                             <div class="col">
                                 <div class="input-group">
-                                    <asp:TextBox class="form-control" required ID="amountDCSA" placeholder="0.00" runat="server" type="number"></asp:TextBox>
+                                    <asp:TextBox class="form-control optionsDCSA" required ID="amountDCSA" placeholder="0.00" runat="server" type="number"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -299,10 +302,13 @@
                     <h6 class="modal-title" id="transferOtherLabel">Transfer to another bank</h6>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" id="transferOtherClose" aria-label="Close"></button>
                 </div>
+                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                <ContentTemplate>
+
                 <div class="modal-body">
                     <div class="container-fluid">
 
-                        <div class="col" id="errorMessage"></div>
+                        <div class="col" id="errorOtherMessage"></div>
 
                         <div class="row">
                             <h6 class="col-12 ps-0">Transfer from:</h6>                                       
@@ -322,19 +328,19 @@
 
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <select required class="form-control" name="otherBanks" id="otherBanks">
+                                    <select required class="form-control optionsOther" name="otherBanks" id="otherBanks">
                                         <option value="1">Fake GCash</option>
                                     </select>
                                     <label for="otherBanks">Select Bank:</label>
                                 </div>
 
                                 <div class="form-floating mt-3">
-                                    <asp:TextBox class="form-control" required ID="accountNumberOther" placeholder="Account Name (Ex: Juan Dela Cruz)" runat="server" type="number"></asp:TextBox>
+                                    <asp:TextBox class="form-control optionsOther" required ID="accountNumberOther" placeholder="Account Name (Ex: Juan Dela Cruz)" runat="server" type="number"></asp:TextBox>
                                     <label for="<%= accountNumberOther.ClientID %>">Account Number (Ex: 1234657890)</label>
                                 </div>
 
                                 <div class="form-floating mt-3">
-                                    <asp:TextBox class="form-control" required ID="accountNameOther" placeholder="Account Name (Ex: Juan Dela Cruz)" runat="server"></asp:TextBox>
+                                    <asp:TextBox class="form-control optionsOther" required ID="accountNameOther" placeholder="Account Name (Ex: Juan Dela Cruz)" runat="server"></asp:TextBox>
                                     <label for="<%= accountNameOther.ClientID %>">Account Name (Ex: Juan Dela Cruz)</label>
                                 </div>
                             </div>
@@ -348,7 +354,7 @@
                             </div>
                             <div class="col">
                                 <div class="input-group">
-                                    <asp:TextBox class="form-control" required ID="amountOther" placeholder="Account Name (Ex: Juan Dela Cruz)" runat="server" type="number"></asp:TextBox>
+                                    <asp:TextBox class="form-control optionsOther" required ID="amountOther" placeholder="0.00" runat="server" type="number"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -363,6 +369,9 @@
                         <asp:Button ID="transferOtherBtn" class="btn btn-danger btn-sm" runat="server" Text="Continue" />
                     </div>
                 </div> 
+
+                </ContentTemplate>
+                </asp:UpdatePanel>
             </div>
         </div>
     </div>

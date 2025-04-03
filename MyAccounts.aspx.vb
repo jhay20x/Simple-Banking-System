@@ -29,12 +29,11 @@ Partial Class MyAccounts
 
             availableBalanceLabel.Text = balance("AvailableBalance").ToString
             availableBalanceModalLabel.Text = balance("AvailableBalance").ToString
-            totalBalanceModalLabel.Text = balance("TotalBalance").ToString
         End If
     End Sub
 
     Private Function GetBalance(ByVal accountNumber As String) As DataRow
-        Dim query = "SELECT AccountType, AvailableBalance, TotalBalance FROM Accounts WHERE AccountsID = @AccountsID;"
+        Dim query = "SELECT AccountType, AvailableBalance FROM Accounts WHERE AccountsID = @AccountsID;"
 
         Connection.AddParam("@AccountsID", accountNumber)
 

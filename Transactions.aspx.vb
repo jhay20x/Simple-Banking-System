@@ -24,7 +24,7 @@ Partial Class Transactions
     End Sub
 
     Public Sub ViewTable(ByVal accountNumber As String)
-        Dim query = "SELECT * FROM Transactions WHERE TransferFrom = @TransferFrom"
+        Dim query = "SELECT * FROM Transactions WHERE TransferFrom = @TransferFrom OR TransferTo = @TransferFrom"
 
         Connection.AddParam("@TransferFrom", accountNumber)
 
@@ -36,6 +36,7 @@ Partial Class Transactions
         headerRow.TableSection = TableRowSection.TableHeader
         headerRow.Cells.Add(New TableHeaderCell() With {.Text = "Transaction ID"})
         headerRow.Cells.Add(New TableHeaderCell() With {.Text = "Transaction Type"})
+        headerRow.Cells.Add(New TableHeaderCell() With {.Text = "Transfer To"})
         headerRow.Cells.Add(New TableHeaderCell() With {.Text = "Date"})
         headerRow.Cells.Add(New TableHeaderCell() With {.Text = "Action"})
 
@@ -46,6 +47,7 @@ Partial Class Transactions
 
             tablerow.Cells.Add(New TableCell() With {.Text = row("TransactionID").ToString()})
             tablerow.Cells.Add(New TableCell() With {.Text = row("TransactionType").ToString()})
+            tablerow.Cells.Add(New TableCell() With {.Text = row("TransferTo").ToString()})
             tablerow.Cells.Add(New TableCell() With {.Text = CDate(row("Date").ToString()).ToString("yyyy-MM-dd")})
 
             Dim viewButton As New Button()
@@ -66,7 +68,7 @@ Partial Class Transactions
     End Sub
 
     Private Sub LoadDetails(ByVal transID As String, ByVal accountNumber As String)
-        Dim query = "SELECT * FROM Transactions WHERE TransferFrom = @TransferFrom AND TransactionID = @TransactionID;"
+        Dim query = "SELECT * FROM Transactions WHERE (TransferFrom = @TransferFrom OR TransferTo = @TransferFrom) AND TransactionID = @TransactionID;"
 
         Connection.AddParam("@TransferFrom", accountNumber)
         Connection.AddParam("@TransactionID", transID)

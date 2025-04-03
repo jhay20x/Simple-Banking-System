@@ -149,11 +149,7 @@
                         <div class="col">
                             <h6>Available Balance</h6>
                             <span><small>PHP</small> <asp:Label class="fw-semibold" ID="availableBalanceModalLabel" runat="server"></asp:Label></span>
-                        </div>
-                        <div class="col mt-3">
-                            <h6>Total Balance</h6>
-                            <span><small>PHP</small> <asp:Label class="fw-semibold" ID="totalBalanceModalLabel" runat="server"></asp:Label></span>
-                        </div>                        
+                        </div>                      
                         <div class="accordion accordion-flush mt-3" id="accountDetails">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
