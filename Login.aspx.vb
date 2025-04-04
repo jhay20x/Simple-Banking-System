@@ -21,9 +21,9 @@ Partial Class _Default
             Exit Sub
         End If
 
-        Dim query = "SELECT us.Username, us.Password, us.UserType, ac.AccountsID, ac.UserInfoID FROM Users us " & _
-        "LEFT OUTER JOIN UserInfo ui ON ui.UserID = us.UserID " & _
-        "LEFT OUTER JOIN Accounts ac ON ui.UserInfoID = ac.UserInfoID " & _
+        Dim query = "SELECT us.Username, us.Password, us.UserType, ac.AccountsID, ac.UserInfoID FROM Users us " &
+        "LEFT OUTER JOIN UserInfo ui ON ui.UserID = us.UserID " &
+        "LEFT OUTER JOIN Accounts ac ON ui.UserInfoID = ac.UserInfoID " &
         "WHERE us.Username = @Username"
 
         Connection.AddParam("@Username", username)
@@ -33,7 +33,7 @@ Partial Class _Default
         If result Then
             Dim user = Connection.Data.Tables(0).Rows(0)
 
-            If ComputeHash(password).SequenceEqual(DirectCast(user("Password"), Byte())) Then
+            If ComputeHash(password) = user("Password").ToString Then
                 'FormsAuthentication.SetAuthCookie(username, False)
 
                 Dim ticket As New FormsAuthenticationTicket(1, username, DateTime.Now, DateTime.Now.AddMinutes(30), False, user("AccountsID") & "," & user("UserInfoID"))
@@ -57,9 +57,11 @@ Partial Class _Default
         End If
     End Sub
 
-    Private Function ComputeHash(ByVal input As String) As Byte()
+    Private Function ComputeHash(ByVal input As String) As String
         Dim sha256 As New System.Security.Cryptography.SHA256Managed()
         Dim bytes As Byte() = System.Text.Encoding.UTF8.GetBytes(input)
-        Return sha256.ComputeHash(bytes)
+        Dim hashBytes As Byte() = sha256.ComputeHash(bytes)
+
+        Return BitConverter.ToString(hashBytes).Replace("-", "").ToLower()
     End Function
 End Class

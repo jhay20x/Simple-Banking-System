@@ -6,7 +6,6 @@ Partial Class MyProfile
     Dim Connection As New Connection
 
     Private Sub MyProfile_Load(sender As Object, e As EventArgs) Handles Me.Load
-
         Dim authCookie As HttpCookie = Request.Cookies(FormsAuthentication.FormsCookieName)
 
         If authCookie IsNot Nothing Then
