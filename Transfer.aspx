@@ -203,7 +203,7 @@
                 More
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#">My Profile</a></li>
+                <li><a class="dropdown-item" href="./MyProfile.aspx">My Profile</a></li>
                 <li><a class="dropdown-item" href="#">Change Password</a></li>
                 <li>
                     <hr class="dropdown-divider">
@@ -228,7 +228,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" id="transferDCSAClose" aria-label="Close"></button>
                 </div>                             
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
+                <ContentTemplate>                    
+                <asp:Panel ID="MainPanelDCSA" runat="server" DefaultButton="transferDCSABtn">
 
                 <div class="modal-body">
                     <div class="container-fluid">
@@ -288,6 +289,7 @@
                     </div>
                 </div> 
                                 
+                </asp:Panel>
                 </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
@@ -304,6 +306,7 @@
                 </div>
                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                 <ContentTemplate>
+                <asp:Panel ID="MainPanelOther" DefaultButton="transferOtherBtn" runat="server">
 
                 <div class="modal-body">
                     <div class="container-fluid">
@@ -370,6 +373,7 @@
                     </div>
                 </div> 
 
+                </asp:Panel>
                 </ContentTemplate>
                 </asp:UpdatePanel>
             </div>

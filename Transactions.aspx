@@ -100,7 +100,7 @@
                 More
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#">My Profile</a></li>
+                <li><a class="dropdown-item" href="./MyProfile.aspx">My Profile</a></li>
                 <li><a class="dropdown-item" href="#">Change Password</a></li>
                 <li>
                     <hr class="dropdown-divider">
