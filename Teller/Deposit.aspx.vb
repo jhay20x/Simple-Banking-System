@@ -70,6 +70,11 @@ Partial Class Teller_Deposit
         End If
     End Sub
 
+    Private Sub Logout_Click(sender As Object, e As EventArgs) Handles Logout.Click
+        FormsAuthentication.SignOut()
+        Response.Redirect("../Login.aspx")
+    End Sub
+
     Private Function CheckAccountNumber(userAccountNumber As String) As Boolean
         Dim query = "SELECT AccountsID FROM Accounts WHERE AccountsID = @AccountsID;"
 

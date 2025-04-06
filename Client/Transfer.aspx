@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>DCSA - Transfer</title>    
-    <script src="/resources/script/jquery-3.7.1.js" type="text/javascript"></script>
+    <script src="../resources/script/jquery-3.7.1.js" type="text/javascript"></script>
     <style>
         input[type="number"]::-webkit-inner-spin-button,
         input[type="number"]::-webkit-outer-spin-button {
@@ -40,6 +40,11 @@
                 background-color: maroon !important;
                 color: white !important;
                 transition: 0.3s;
+            }
+
+            .dropdown-item.active {
+                background-color: maroon !important;
+                font-weight: bolder;
             }
 
             .bank-options h5 {
@@ -94,6 +99,11 @@
                 background-color: maroon !important;
                 color: white !important;
                 transition: 0.3s;
+            }
+
+            .dropdown-item.active {
+                background-color: maroon !important;
+                font-weight: bolder;
             }
 
             .bank-options h5 {
@@ -209,7 +219,7 @@
                     <hr class="dropdown-divider">
                 </li>
                 <li>
-                    <asp:Button ID="Logout" class="dropdown-item" runat="server" Text="Logout" />
+                    <asp:Button ID="Logout" class="dropdown-item" runat="server" Text="Logout" CausesValidation="False" UseSubmitBehavior="False" />
                     <%--<a class="dropdown-item" href="Login.aspx">Logout</a>--%>
                 </li>
             </ul>
@@ -386,7 +396,7 @@
             <div id="transferDCSA" class="col-5 col-md-4 col-lg-3 btn rounded shadow mt-3 me-3 me-md-5 bg-white" data-bs-toggle="modal" data-bs-target="#transferDCSAModal">
                 <div class="m-3 row d-flex justify-content-center">
                     <div class="col-12">
-                        <img class="img-fluid" src="/resources/img/person.png" alt="Logo" height="150px" width="150px" />
+                        <img class="img-fluid" src="../resources/img/person.png" alt="Logo" height="150px" width="150px" />
                     </div>
                     <div class="col-12 col-md-10 col-lg bank-options">
                         <h5>To another DCSA account</h5>
@@ -397,7 +407,7 @@
             <div id="transferOther" class="col-5 col-md-4 col-lg-3 btn rounded shadow mt-3 bg-white" data-bs-toggle="modal" data-bs-target="#transferOtherModal">
                 <div class="m-3 row d-flex justify-content-center">
                     <div class="col-12">
-                        <img class="img-fluid" src="/resources/img/person-multiple.png" alt="Logo" height="150px" width="150px" />
+                        <img class="img-fluid" src="../resources/img/person-multiple.png" alt="Logo" height="150px" width="150px" />
                     </div>
                     <div class="col-12 col-md-8 col-lg bank-options">
                         <h5>To another bank</h5>

@@ -20,7 +20,7 @@ Partial Class ChangePassword
 
     Private Sub Logout_Click(sender As Object, e As EventArgs) Handles Logout.Click
         FormsAuthentication.SignOut()
-        Response.Redirect("Login.aspx")
+        Response.Redirect("../Login.aspx")
     End Sub
 
     Private Sub UpdatePasswordBtn_Click(sender As Object, e As EventArgs) Handles UpdatePasswordBtn.Click

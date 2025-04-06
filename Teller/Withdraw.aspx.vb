@@ -42,10 +42,10 @@ Partial Class Teller_Withdraw
     End Sub
 
     Private Sub TransactionLog(ByVal userAccountNumber As String, ByVal userAmount As String)
-        Dim query = "INSERT INTO Transactions (TransactionType, TransferFrom, TransferTo, Amount) VALUES (@TransactionType, 'DCSA Bank', @TransferTo, @Amount);"
+        Dim query = "INSERT INTO Transactions (TransactionType, TransferFrom, TransferTo, Amount) VALUES (@TransactionType, @TransferFrom, 'DCSA Bank', @Amount);"
 
         Connection.AddParam("@TransactionType", "Money Withdraw")
-        Connection.AddParam("@TransferTo", userAccountNumber)
+        Connection.AddParam("@TransferFrom", userAccountNumber)
         Connection.AddParam("@Amount", userAmount)
 
         Dim result = Connection.Query(query)
@@ -74,6 +74,11 @@ Partial Class Teller_Withdraw
             Dim script As String = "limitInputs();$(""#errorMessage"").empty();$(""#errorMessage"").append('<div class=""alert alert-danger"" role=""alert"">Withdraw failed. Please try again.</div>');"
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "ErrorMesssage", script, True)
         End If
+    End Sub
+
+    Private Sub Logout_Click(sender As Object, e As EventArgs) Handles Logout.Click
+        FormsAuthentication.SignOut()
+        Response.Redirect("../Login.aspx")
     End Sub
 
     Private Function CheckAccountNumber(userAccountNumber As String) As Boolean

@@ -52,7 +52,7 @@ Partial Class _Default
                             If user("UserType") = "Client" Then
                                 Response.Redirect("./Client/MyAccounts.aspx")
                             Else
-                                Response.Redirect("./Teller/Home.aspx")
+                                Response.Redirect("./Teller/Dashboard.aspx")
                             End If
                         End If
                     Else

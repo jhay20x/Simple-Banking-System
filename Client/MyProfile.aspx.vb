@@ -58,6 +58,6 @@ Partial Class MyProfile
 
     Private Sub Logout_Click(sender As Object, e As EventArgs) Handles Logout.Click
         FormsAuthentication.SignOut()
-        Response.Redirect("Login.aspx")
+        Response.Redirect("../Login.aspx")
     End Sub
 End Class

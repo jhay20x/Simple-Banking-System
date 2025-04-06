@@ -2,15 +2,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>DCSA - Transactions</title>
-    <link rel="stylesheet" href="/resources/style/dataTables.bootstrap5.css">
-    <link href="/resources/style/dataTables.dateTime.css" rel="stylesheet" type="text/css" />
-    <link href="/resources/style/searchBuilder.dataTables.css" rel="stylesheet" type="text/css" />
-    <script src="/resources/script/jquery-3.7.1.js" type="text/javascript"></script>
-    <script src="/resources/script/dataTables.js" type="text/javascript"></script>
-    <script src="/resources/script/dataTables.bootstrap5.js" type="text/javascript"></script>
-    <script src="/resources/script/searchBuilder.dataTables.js" type="text/javascript"></script>
-    <script src="/resources/script/dataTables.searchBuilder.js" type="text/javascript"></script>
-    <script src="/resources/script/dataTables.dateTime.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="../resources/style/dataTables.bootstrap5.css">
+    <link href="../resources/style/dataTables.dateTime.css" rel="stylesheet" type="text/css" />
+    <link href="../resources/style/searchBuilder.dataTables.css" rel="stylesheet" type="text/css" />
+    <script src="../resources/script/jquery-3.7.1.js" type="text/javascript"></script>
+    <script src="../resources/script/dataTables.js" type="text/javascript"></script>
+    <script src="../resources/script/dataTables.bootstrap5.js" type="text/javascript"></script>
+    <script src="../resources/script/searchBuilder.dataTables.js" type="text/javascript"></script>
+    <script src="../resources/script/dataTables.searchBuilder.js" type="text/javascript"></script>
+    <script src="../resources/script/dataTables.dateTime.js" type="text/javascript"></script>
     <style>
         @media only screen and (min-width: 992px) and (max-width: 2500px) {
             .nav-link {
@@ -42,6 +42,11 @@
                 background-color: maroon !important;
                 color: white !important;
                 transition: 0.3s;
+            }
+
+            .dropdown-item.active {
+                background-color: maroon !important;
+                font-weight: bolder;
             }
         }
 
@@ -77,6 +82,11 @@
                 color: white !important;
                 transition: 0.3s;
             }
+
+            .dropdown-item.active {
+                background-color: maroon !important;
+                font-weight: bolder;
+            }
         }
     </style>
 </asp:Content>
@@ -106,7 +116,7 @@
                     <hr class="dropdown-divider">
                 </li>
                 <li>
-                    <asp:Button ID="Logout" class="dropdown-item" runat="server" Text="Logout" />
+                    <asp:Button ID="Logout" class="dropdown-item" runat="server" Text="Logout" CausesValidation="False" UseSubmitBehavior="False" />
                     <%--<a class="dropdown-item" href="Login.aspx">Logout</a>--%>
                 </li>
             </ul>

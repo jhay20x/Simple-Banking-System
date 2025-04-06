@@ -6,7 +6,7 @@ Partial Class Transactions
 
     Protected Sub Logout_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Logout.Click
         FormsAuthentication.SignOut()
-        Response.Redirect("Login.aspx")
+        Response.Redirect("../Login.aspx")
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load

@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>DCSA - My Profile</title>
-    <script src="/resources/script/jquery-3.7.1.js" type="text/javascript"></script>
+    <script src="../resources/script/jquery-3.7.1.js" type="text/javascript"></script>
     <style>
         @media only screen and (min-width: 992px) and (max-width: 2500px) {
             .nav-link {
@@ -34,6 +34,11 @@
                 background-color: maroon !important;
                 color: white !important;
                 transition: 0.3s;
+            }
+
+            .dropdown-item.active {
+                background-color: maroon !important;
+                font-weight: bolder;
             }
 
             #accountDetails .accordion-item .accordion-header .accordion-button:not(.collapsed) {
@@ -84,6 +89,11 @@
                 transition: 0.3s;
             }
 
+            .dropdown-item.active {
+                background-color: maroon !important;
+                font-weight: bolder;
+            }
+
             #accountDetails .accordion-item .accordion-header .accordion-button:not(.collapsed) {
                 color: #198754 !important;
                 background-color: white !important;
@@ -120,13 +130,13 @@
                 More
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="./MyProfile.aspx">My Profile</a></li>
+                <li><a class="dropdown-item active" href="./MyProfile.aspx">My Profile</a></li>
                 <li><a class="dropdown-item" href="./ChangePassword.aspx">Change Password</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
                 <li>
-                    <asp:Button ID="Logout" class="dropdown-item" runat="server" Text="Logout" />
+                    <asp:Button ID="Logout" class="dropdown-item" runat="server" Text="Logout" CausesValidation="False" UseSubmitBehavior="False" />
                     <%--<a class="dropdown-item" href="Login.aspx">Logout</a>--%>
                 </li>
             </ul>

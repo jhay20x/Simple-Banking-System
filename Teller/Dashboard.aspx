@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>DCSA - Dashboard</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">    
-    <script src="/resources/script/jquery-3.7.1.js" type="text/javascript"></script>
+    <script src="../resources/script/jquery-3.7.1.js" type="text/javascript"></script>
     <style>
         @media only screen and (min-width: 992px) and (max-width: 2500px) {
             .nav-link {
@@ -35,6 +35,11 @@
                 background-color: maroon !important;
                 color: white !important;
                 transition: 0.3s;
+            }
+
+            .dropdown-item.active {
+                background-color: maroon !important;
+                font-weight: bolder;
             }
 
             #accountDetails .accordion-item .accordion-header .accordion-button:not(.collapsed) {
@@ -95,6 +100,11 @@
                 transition: 0.3s;
             }
 
+            .dropdown-item.active {
+                background-color: maroon !important;
+                font-weight: bolder;
+            }
+
             #accountDetails .accordion-item .accordion-header .accordion-button:not(.collapsed) {
                 color: #198754 !important;
                 background-color: white !important;
@@ -134,14 +144,13 @@
                 More
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="./MyProfile.aspx">Transactions</a></li>
-                <li><a class="dropdown-item" href="./MyProfile.aspx">Customer Search</a></li>
-                <li><a class="dropdown-item" href="./MyProfile.aspx">Account Inquiry</a></li>
+                <li><a class="dropdown-item" href="./Transactions.aspx">Transactions</a></li>
+                <li><a class="dropdown-item" href="./CustomerSearch.aspx">Customer Search</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
                 <li>
-                    <asp:Button ID="Logout" class="dropdown-item" runat="server" Text="Logout" />
+                    <asp:Button ID="Logout" class="dropdown-item" runat="server" Text="Logout" CausesValidation="False" UseSubmitBehavior="False" />
                     <%--<a class="dropdown-item" href="Login.aspx">Logout</a>--%>
                 </li>
             </ul>
@@ -156,12 +165,12 @@
                     <h1 class="col-auto">Dashboard</h1>
                 </div>    
 
-                <div class="row justify-content-center">
+                <div class="row mt-3 justify-content-center">
                     <div class="col-12 col-sm-4 col-lg-3 mb-3 mb-sm-0">
                         <div class="card">
                             <div class="card-body text-center">
                                 <h6 class="card-title">Total Clients Today</h6>                                
-                                <h3 class="card-text">12</h3>
+                                <h3 class="card-text"><asp:Label ID="TotalClients" runat="server">0</asp:Label></h3>
                             </div>
                         </div>
                     </div>
@@ -170,7 +179,7 @@
                         <div class="card">
                             <div class="card-body text-center">
                                 <h6 class="card-title">Total Deposits Today</h6>
-                                <h3 class="card-text">12</h3>
+                                <h3 class="card-text"><asp:Label ID="TotalDeposit" runat="server">0</asp:Label></h3>
                             </div>
                         </div>
                     </div>
@@ -179,7 +188,7 @@
                         <div class="card">
                             <div class="card-body text-center">
                                 <h6 class="card-title">Total Withdraws Today</h6>
-                                <h3 class="card-text">12</h3>
+                                <h3 class="card-text"><asp:Label ID="TotalWithdraw" runat="server">0</asp:Label></h3>
                             </div>
                         </div>
                     </div>

@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>DCSA - Withdraw</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">    
-    <script src="/resources/script/jquery-3.7.1.js" type="text/javascript"></script>
+    <script src="../resources/script/jquery-3.7.1.js" type="text/javascript"></script>
     <style>
         input[type="number"]::-webkit-inner-spin-button,
         input[type="number"]::-webkit-outer-spin-button {
@@ -41,6 +41,11 @@
                 background-color: maroon !important;
                 color: white !important;
                 transition: 0.3s;
+            }
+
+            .dropdown-item.active {
+                background-color: maroon !important;
+                font-weight: bolder;
             }
 
             #accountDetails .accordion-item .accordion-header .accordion-button:not(.collapsed) {
@@ -99,6 +104,11 @@
                 background-color: maroon !important;
                 color: white !important;
                 transition: 0.3s;
+            }
+
+            .dropdown-item.active {
+                background-color: maroon !important;
+                font-weight: bolder;
             }
 
             #accountDetails .accordion-item .accordion-header .accordion-button:not(.collapsed) {
@@ -166,14 +176,13 @@
                 More
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="./MyProfile.aspx">Transactions</a></li>
-                <li><a class="dropdown-item" href="./MyProfile.aspx">Customer Search</a></li>
-                <li><a class="dropdown-item" href="./MyProfile.aspx">Account Inquiry</a></li>
+                <li><a class="dropdown-item" href="./Transactions.aspx">Transactions</a></li>
+                <li><a class="dropdown-item" href="./CustomerSearch.aspx">Customer Search</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
                 <li>
-                    <asp:Button ID="Logout" class="dropdown-item" runat="server" Text="Logout" />
+                    <asp:Button ID="Logout" class="dropdown-item" runat="server" Text="Logout" CausesValidation="False" UseSubmitBehavior="False" />
                     <%--<a class="dropdown-item" href="Login.aspx">Logout</a>--%>
                 </li>
             </ul>

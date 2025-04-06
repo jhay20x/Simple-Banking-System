@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>DCSA - Update Password</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script src="/resources/script/jquery-3.7.1.js" type="text/javascript"></script>
+    <script src="../resources/script/jquery-3.7.1.js" type="text/javascript"></script>
     <style>
         @media only screen and (min-width: 992px) and (max-width: 2500px) {
             .nav-link {
@@ -35,6 +35,11 @@
                 background-color: maroon !important;
                 color: white !important;
                 transition: 0.3s;
+            }
+
+            .dropdown-item.active {
+                background-color: maroon !important;
+                font-weight: bolder;
             }
 
             #accountDetails .accordion-item .accordion-header .accordion-button:not(.collapsed) {
@@ -83,6 +88,11 @@
                 background-color: maroon !important;
                 color: white !important;
                 transition: 0.3s;
+            }
+
+            .dropdown-item.active {
+                background-color: maroon !important;
+                font-weight: bolder;
             }
 
             #accountDetails .accordion-item .accordion-header .accordion-button:not(.collapsed) {
@@ -149,7 +159,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="./MyProfile.aspx">My Profile</a></li>
-                <li><a class="dropdown-item" href="./ChangePassword.aspx">Change Password</a></li>
+                <li><a class="dropdown-item active" href="./ChangePassword.aspx">Change Password</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
