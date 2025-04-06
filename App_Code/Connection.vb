@@ -16,6 +16,8 @@ Public Class Connection
 
     Public SESSION As DataRow
 
+    Public OTPCode As Integer
+
     Public DataCount As Integer
 
     Public Sub Open()

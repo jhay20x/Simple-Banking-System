@@ -147,6 +147,8 @@
                         <h6 class="fw-normal">Gender: <span class="h6"><asp:Label ID="GenderLabel" runat="server"></asp:Label></span></h6>
                         <h6 class="fw-normal">Date of Birth: <span class="h6"><asp:Label ID="DOBLabel" runat="server"></asp:Label></span></h6>
                         <h6 class="fw-normal">Address: <span class="h6"><asp:Label ID="AddressLabel" runat="server"></asp:Label></span></h6>
+                        <h6 class="fw-normal">Country of Birth: <span class="h6"><asp:Label ID="CountryBirth" runat="server"></asp:Label></span></h6>
+                        <h6 class="fw-normal">City of Birth: <span class="h6"><asp:Label ID="CityBirth" runat="server"></asp:Label></span></h6>
                         <h6 class="fw-normal">Contact Number: <span class="h6"><asp:Label ID="ContactLabel" runat="server"></asp:Label></span></h6>
                         <h6 class="fw-normal">Email Address: <span class="h6"><asp:Label ID="EmailLabel" runat="server"></asp:Label></span></h6>
                     </div>

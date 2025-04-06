@@ -49,6 +49,8 @@ Partial Class MyProfile
             GenderLabel.Text = row("Gender")
             DOBLabel.Text = CDate(row("DOB")).ToString("MMMM dd, yyyy")
             AddressLabel.Text = row("Address")
+            CountryBirth.Text = row("CountryBirth")
+            CityBirth.Text = row("CityBirth")
             ContactLabel.Text = row("ContactNumber")
             EmailLabel.Text = row("EmailAddress")
         End If

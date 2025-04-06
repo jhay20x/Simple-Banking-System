@@ -4,6 +4,8 @@ Partial Class _Default
 
     Dim mail As New SendEmail
     Dim Connection As New Connection
+    Public OTP, EmailVerified As Integer
+    Public EmailAddress As String
 
     Protected Sub loginBtn_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles loginBtn.Click
         Dim username As String = loginUsername.Text.Trim()
@@ -34,18 +36,33 @@ Partial Class _Default
             Dim user = Connection.Data.Tables(0).Rows(0)
 
             If ComputeHash(password) = user("Password").ToString Then
-                'FormsAuthentication.SetAuthCookie(username, False)
+                FetchOTPEmail(username)
 
-                Dim ticket As New FormsAuthenticationTicket(1, username, DateTime.Now, DateTime.Now.AddMinutes(30), False, user("AccountsID") & "," & user("UserInfoID"))
-                Dim encryptedTicket As String = FormsAuthentication.Encrypt(ticket)
-                Dim authCookie As New HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket)
-                Response.Cookies.Add(authCookie)
-                Dim returnUrl As String = Request.QueryString("ReturnUrl")
+                If EmailVerified Then
+                    If CheckInfo(username) Then
+                        Dim ticket As New FormsAuthenticationTicket(1, username, DateTime.Now, DateTime.Now.AddMinutes(30), False, user("AccountsID") & "," & user("UserInfoID"))
+                        Dim encryptedTicket As String = FormsAuthentication.Encrypt(ticket)
+                        Dim authCookie As New HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket)
+                        Response.Cookies.Add(authCookie)
+                        Dim returnUrl As String = Request.QueryString("ReturnUrl")
 
-                If Not String.IsNullOrEmpty(returnUrl) AndAlso returnUrl.ToLower() <> "login.aspx" Then
-                    Response.Redirect(returnUrl)
+                        If Not String.IsNullOrEmpty(returnUrl) AndAlso returnUrl.ToLower() <> "login.aspx" Then
+                            Response.Redirect(returnUrl)
+                        Else
+                            Response.Redirect("MyAccounts.aspx")
+                        End If
+                    Else
+                        Session("OTPCode") = OTP
+                        Session("EmailAddress") = EmailAddress
+                        Response.Redirect("./CreateAccount/PersonalInformation.aspx")
+                    End If
                 Else
-                    Response.Redirect("MyAccounts.aspx")
+                    Session("OTPCode") = OTP
+                    Session("EmailAddress") = EmailAddress
+                    Response.Redirect("./CreateAccount/VerifyOTP.aspx")
+
+                    Dim script As String = "$(""#errorMessage"").append('<div class=""alert alert-danger"" role=""alert"">" & OTP & "</div>');"
+                    ClientScript.RegisterStartupScript(Me.GetType(), "ErrorMesssage", script, True)
                 End If
             Else
                 Dim script As String = "$(""#errorMessage"").append('<div class=""alert alert-danger"" role=""alert"">Password is incorrect. Please try again.</div>');"
@@ -64,4 +81,36 @@ Partial Class _Default
 
         Return BitConverter.ToString(hashBytes).Replace("-", "").ToLower()
     End Function
+
+    Private Function CheckInfo(username As String)
+        Dim query = "SELECT ui.UserID FROM UserInfo ui " &
+        "LEFT OUTER JOIN Users us ON us.UserID = ui.UserID " &
+        "WHERE us.Username = @Username;"
+
+        Connection.AddParam("@Username", username)
+
+        Dim result = Connection.Query(query)
+
+        If result Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Private Sub FetchOTPEmail(username As String)
+        Dim query = "SELECT OTP, EmailAddress, EmailVerified FROM Users WHERE Username = @Username"
+
+        Connection.AddParam("@Username", username)
+
+        Dim result = Connection.Query(query)
+
+        If result Then
+            Dim row = Connection.Data.Tables(0).Rows(0)
+
+            OTP = row("OTP")
+            EmailAddress = row("EmailAddress")
+            EmailVerified = row("EmailVerified")
+        End If
+    End Sub
 End Class

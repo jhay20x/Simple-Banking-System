@@ -36,7 +36,6 @@ Partial Class Transactions
         headerRow.TableSection = TableRowSection.TableHeader
         headerRow.Cells.Add(New TableHeaderCell() With {.Text = "Transaction ID"})
         headerRow.Cells.Add(New TableHeaderCell() With {.Text = "Transaction Type"})
-        headerRow.Cells.Add(New TableHeaderCell() With {.Text = "Transfer To"})
         headerRow.Cells.Add(New TableHeaderCell() With {.Text = "Date"})
         headerRow.Cells.Add(New TableHeaderCell() With {.Text = "Action"})
 
@@ -47,7 +46,6 @@ Partial Class Transactions
 
             tablerow.Cells.Add(New TableCell() With {.Text = row("TransactionID").ToString()})
             tablerow.Cells.Add(New TableCell() With {.Text = row("TransactionType").ToString()})
-            tablerow.Cells.Add(New TableCell() With {.Text = row("TransferTo").ToString()})
             tablerow.Cells.Add(New TableCell() With {.Text = CDate(row("Date").ToString()).ToString("yyyy-MM-dd")})
 
             Dim viewButton As New Button()

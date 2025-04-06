@@ -2,27 +2,26 @@
 Imports System.Net.Mail
 
 Public Class SendEmail
+    Inherits System.Web.UI.Page
 
-    Public Sub btnSendEmail_Click()
+    Public Sub EmailSend(userEmail As String, subject As String, content As String)
         Try
-            ' Create a new email message
             Dim mail As New MailMessage()
-            mail.From = New MailAddress("jhay20x@gmail.com") ' Sender's email
-            mail.To.Add("jhay20x@gmail.com") ' Recipient's email
-            mail.Subject = "Test Email from ASP.NET VB"
-            mail.Body = "Hello, this is a test email from an ASP.NET VB application."
+            mail.From = New MailAddress("jhay20x@gmail.com")
+            mail.To.Add(userEmail)
+            mail.Subject = subject
+            mail.Body = content
 
-            ' SMTP Client Configuration
-            Dim smtp As New SmtpClient("smtp.gmail.com") ' Replace with your SMTP server
-            smtp.Port = 587 ' Common SMTP ports: 25, 465, 587
-            smtp.Credentials = New NetworkCredential("jhay20x@gmail.com", "grvf jkur pyxw pdqs") ' Your email credentials
-            smtp.EnableSsl = True ' Enable SSL for security
+            Dim smtp As New SmtpClient("smtp.gmail.com")
+            smtp.Port = 587
+            smtp.Credentials = New NetworkCredential("jhay20x@gmail.com", "grvf jkur pyxw pdqs")
+            smtp.EnableSsl = True
 
-            ' Send the email
             smtp.Send(mail)
-
-            MsgBox("Email sent successfully!") ' Update UI
         Catch ex As Exception
+
+            Dim errorscript As String = "$(""#errorMessage"").append('<div class=""alert alert-success"" role=""alert"">Error: " & ex.Message & "</div>');$(""#userEmailAccount"").prop(""disabled"", false);"
+            ClientScript.RegisterStartupScript(Me.GetType(), "ErrorMesssage", errorscript, True)
             MsgBox("Error: " & ex.Message)
         End Try
     End Sub

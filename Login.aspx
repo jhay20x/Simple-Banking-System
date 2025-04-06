@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">    
+<head runat="server">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" type="image/x-icon" href="resources/img/LOGO_Only.png"/>
@@ -14,7 +14,7 @@
     <script src="resources/script/jquery-3.7.1.js" type="text/javascript"></script>
 </head>
 <body class="bg-danger d-flex justify-content-center align-items-center" style="min-height:100vh;">
-    <form id="myForm" runat="server">
+    <form id="myForm" class="col-10 col-sm-6 col-md-6 col-lg-4 col-xl-3" runat="server">
         <div class="p-5 flex-column bg-white rounded shadow d-flex align-items-center row">
             <div class="d-flex flex-column align-items-center mb-3">
                 <a href="#">
@@ -44,7 +44,11 @@
             <div class="d-flex flex-column align-items-center">
                 <asp:Button ID="loginBtn" class="btn p-2 mb-3 col-12 btn-danger" runat="server" Text="Log in" />
                 <h6>
-                    Forgot <a href="#">username</a> or <a href="#">password</a>
+                    Forgot <a href="./AccountsRecovery/ForgotUsername.aspx">username</a> or <a href="./AccountsRecovery/ForgotPassword.aspx">password</a>
+                </h6>
+                <h6><span class="fw-normal"> - or -</span></h6>
+                <h6>
+                    <a href="./CreateAccount/CreateAccount.aspx">Create</a> a new account
                 </h6>
             </div>
         </div>

@@ -126,25 +126,25 @@
         }
 
         function limitFields() {
-                $("#<%= accountNumberDCSA.ClientID %>, #<%= accountNumberOther.ClientID %>").on("input", function () {
-                    if (this.value.length > 10) {
-                        this.value = this.value.substring(0, 11);
-                    }
-                });
+            $("#<%= accountNumberDCSA.ClientID %>, #<%= accountNumberOther.ClientID %>").on("input", function () {
+                if (this.value.length > 10) {
+                    this.value = this.value.substring(0, 11);
+                }
+            });
     
-                $("#<%= amountDCSA.ClientID %>, #<%= amountOther.ClientID %>").on("input", function () {
-                    if (this.value.length > 8) {
-                        this.value = this.value.substring(0, 8);
-                    }
-                });
+            $("#<%= amountDCSA.ClientID %>, #<%= amountOther.ClientID %>").on("input", function () {
+                if (this.value.length > 8) {
+                    this.value = this.value.substring(0, 8);
+                }
+            });
     
-                $("#<%= amountDCSA.ClientID %>, #<%= amountOther.ClientID %>").on("blur", function () {                
-                    let val = parseFloat(this.value);
-                    if (!isNaN(val)) {
-                        this.value = val.toFixed(2);
-                    }
-                });
-            }
+            $("#<%= amountDCSA.ClientID %>, #<%= amountOther.ClientID %>").on("blur", function () {                
+                let val = parseFloat(this.value);
+                if (!isNaN(val)) {
+                    this.value = val.toFixed(2);
+                }
+            });
+        }
 
         $(document).ready(function () {
             disableInputs();   
