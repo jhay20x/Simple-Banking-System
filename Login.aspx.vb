@@ -40,7 +40,7 @@ Partial Class _Default
 
                 If EmailVerified Then
                     If CheckInfo(username) Then
-                        Dim ticket As New FormsAuthenticationTicket(1, username, DateTime.Now, DateTime.Now.AddMinutes(30), False, user("AccountsID") & "," & user("UserInfoID"))
+                        Dim ticket As New FormsAuthenticationTicket(1, username, DateTime.Now, DateTime.Now.AddMinutes(30), False, user("AccountsID") & "," & user("UserInfoID") & "," & user("UserType"))
                         Dim encryptedTicket As String = FormsAuthentication.Encrypt(ticket)
                         Dim authCookie As New HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket)
                         Response.Cookies.Add(authCookie)
@@ -49,7 +49,11 @@ Partial Class _Default
                         If Not String.IsNullOrEmpty(returnUrl) AndAlso returnUrl.ToLower() <> "login.aspx" Then
                             Response.Redirect(returnUrl)
                         Else
-                            Response.Redirect("MyAccounts.aspx")
+                            If user("UserType") = "Client" Then
+                                Response.Redirect("./Client/MyAccounts.aspx")
+                            Else
+                                Response.Redirect("./Teller/Home.aspx")
+                            End If
                         End If
                     Else
                         Session("OTPCode") = OTP
