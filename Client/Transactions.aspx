@@ -212,6 +212,9 @@
                 autoSize: true,
                 scrollCollapse: true,
                 scrollY: '30vh',
+                order: [
+                    [0, 'desc']
+                ]
             });
         }
 

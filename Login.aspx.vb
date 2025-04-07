@@ -51,8 +51,10 @@ Partial Class _Default
                         Else
                             If user("UserType") = "Client" Then
                                 Response.Redirect("./Client/MyAccounts.aspx")
-                            Else
+                            ElseIf user("UserType") = "Teller" Then
                                 Response.Redirect("./Teller/Dashboard.aspx")
+                            Else
+                                Response.Redirect("./Admin/Dashboard.aspx")
                             End If
                         End If
                     Else

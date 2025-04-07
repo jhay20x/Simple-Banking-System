@@ -242,7 +242,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header d-flex align-items-center">
-                            <h6 class="modal-title" id="profileViewLabel">Transactions</h6>
+                            <h6 class="modal-title" id="profileViewLabel">Customer Search</h6>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" id="profileViewClose" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -260,9 +260,9 @@
                                         </div>
                                     </div>
                         </div>
-                        <!-- <div class="modal-footer">
-                            <input type="submit" class="btn btn-sm  data-bs-toggle="modal" data-bs-target="#profileViewModal"btn-primary btn-md mt-1" value="Submit" name="profileViewSubmitBtn">
-                        </div> -->
+                         <div class="modal-footer">
+                            <input type="button" class="btn btn-sm btn-primary btn-md mt-1" value="Edit">
+                        </div> 
                     </div>
                 </div>
             </div>

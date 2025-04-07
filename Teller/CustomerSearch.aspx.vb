@@ -83,7 +83,7 @@ Partial Class Teller_CustomerSearch
             AccountEmailLabel.Text = row("EmailAddress").ToString
             NameLabel.Text = row("ClientName").ToString
             GenderLabel.Text = row("Gender").ToString
-            DOBLabel.Text = row("DOB").ToString
+            DOBLabel.Text = CDate(row("DOB")).ToString("MMMM dd, yyyy")
             CountryBirthLabel.Text = row("CountryBirth").ToString
             CityBirthLabel.Text = row("CityBirth").ToString
             ContactLabel.Text = row("ContactNumber").ToString
